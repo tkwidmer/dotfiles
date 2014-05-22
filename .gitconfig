@@ -1,0 +1,27 @@
+[github]
+  user = tkwidmer
+  
+[alias]
+  uncommit = reset --soft HEAD^
+  l = log --pretty=format:'%h %an %Cred%ar %d %Cgreen%s'
+  
+[branch]
+  autosetupmerge = true
+
+[push]
+  default = current
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+
+[color "branch"]
+  current = green
+  local = blue
+  remote = yellow
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
