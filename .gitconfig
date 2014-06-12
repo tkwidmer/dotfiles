@@ -12,16 +12,14 @@
   default = current
 
 [color]
-  branch = auto
   diff = auto
-  status = auto
 
 [color "branch"]
   current = green
-  local = blue
+  local = cyan
   remote = yellow
 
 [color "status"]
-  added = yellow
-  changed = green
+  added = green
+  changed = red
   untracked = cyan

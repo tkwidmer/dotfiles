@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'active_record'
 
 alias q exit
 
@@ -7,8 +8,6 @@ class Object
     (methods - Object.instance_methods).sort
   end
 end
-
-IRB.conf[:AUTO_INDENT] = true
 
 ANSI = {}
 ANSI[:RESET] = "\e[0m"
@@ -34,5 +33,31 @@ IRB.conf[:PROMPT][:SIMPLE_COLOR] = {
   :AUTO_INDENT => true }
 IRB.conf[:PROMPT_MODE] = :SIMPLE_COLOR
 
-#log SQL queries to irb
-ActiveRecord::Base.connection.instance_variable_set :@logger, Logger.new(STDOUT)
+if ENV['RAILS_ENV']
+  IRB.conf[:IRB_RC] = Proc.new do
+
+    # Let you use Model[id] to find by id
+    class ActiveRecord::Base
+      def self.[](index)
+        find_by_id(index)
+      end
+    end
+
+    # Shortcuts for finding things by symbol
+    def Fund(symbol)
+      Fund.where(:symbol => symbol.to_s).first
+    end
+
+    def Stock(symbol)
+      Stock.where(:symbol => symbol.to_s).first
+    end
+
+    # Log SQL queries to stdout
+    ActiveRecord::Base.connection.instance_variable_set :@logger, Logger.new(STDOUT)
+
+    # For marshalling session data
+    def load_session(session_data)
+      Marshal.load(Base64.decode64(session_data.split('--').first))
+    end
+  end
+end
