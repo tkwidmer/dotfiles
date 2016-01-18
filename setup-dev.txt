@@ -1,0 +1,108 @@
+# System Preferences
+- date and seconds in menu bar
+- double click menu bar to minimize
+- keyboard -> key repeat to max
+- keyboard -> delay until repeat to short
+- security -> general -> anywhere
+- sound -> play feedback
+- finder -> advanced ->extension warning, show all filename extensions, empty trash securely
+
+# Programs
+- Chrome
+- 1Password
+- Dropbox
+- iterm2
+- Sublime Text 2
+- Alfred
+- Skype
+
+# Setting up Dev Enviorment
+
+### Install Command Line Tools
+
+In terminal run this command:
+
+  <code> 'xcode-select --install' </code>
+
+Install Xcode if you would like.
+
+### Install Homebrew
+
+In the terminal run this command.
+
+  <code>
+  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+  echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+  source ~/.bash_profile
+
+  brew doctor
+  brew update
+
+
+  </code>
+
+### Install GCC 4.2
+
+In the terminal run:
+
+  <code>
+  brew install apple-gcc42
+  sudo ln -s /usr/local/bin/gcc-4.2 /usr/bin/gcc-4.2
+  </code>
+
+### Install git
+
+  brew install git
+
+  set up ssh:
+  https://help.github.com/articles/generating-ssh-keys
+
+
+### Install RVM for Ruby Management
+  <code>
+  curl -L https://get.rvm.io | bash -s stable --autolibs=enabled
+  source /Users/teaganwidmer/.rvm/scripts/rvm
+
+  #to install Ruby 2.0.0
+  rvm install 2.0.0
+
+  #set Ruby 2.0.0 as defualt
+  rvm use 2.0.0 --default
+  </code>
+
+### Install Rails / Bundler
+
+In the terminal
+
+  <code>
+  gem install rails bundler --no-ri --no-rdoc
+  </code>
+
+### Install heroku toolbelt
+
+  https://toolbelt.heroku.com
+
+### Install POW
+
+  curl get.pow.cx | sh
+
+### Install Postgresql
+
+  brew install postgresql
+  initdb /usr/local/var/postgres -E utf8
+
+  # Add PostgreSQL to launchctl to let OS X manage the process and start when you login
+  ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+
+  echo 'alias pg="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log"' >> ~/.bash_profile
+  source ~/.bash_profile
+  pg start
+  # Usage: pg {start|stop|restart|reload|status}
+
+
+
+
+
+
