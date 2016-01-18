@@ -1,10 +1,17 @@
+[user]
+  name = tkwidmer
+  email = tkwidmer@gmail.com
+
+[credential]
+  helper = osxkeychain
+
 [github]
-  user = tkwidmer
-  
+  name = tkwidmer
+
 [alias]
   uncommit = reset --soft HEAD^
   l = log --pretty=format:'%h %an %Cred%ar %d %Cgreen%s'
-  
+
 [branch]
   autosetupmerge = true
 
@@ -13,6 +20,10 @@
 
 [color]
   diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
 
 [color "branch"]
   current = green
@@ -23,3 +34,13 @@
   added = green
   changed = red
   untracked = cyan
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta
+  plain = white bold
+  old = red bold
+  new = green bold
+  commit = yellow bold
+  func = green dim
+  #plain = white bold
