@@ -1,16 +1,18 @@
 [user]
+	name = Teagan Widmer
+	email = teagan@futureadvisor.com
+
+[github]
   name = tkwidmer
-  email = tkwidmer@gmail.com
+	user = tkwidmer
 
 [credential]
   helper = osxkeychain
 
-[github]
-  name = tkwidmer
-
 [alias]
   uncommit = reset --soft HEAD^
   l = log --pretty=format:'%h %an %Cred%ar %d %Cgreen%s'
+  tree = log --oneline --decorate --graph --all
 
 [branch]
   autosetupmerge = true
@@ -44,42 +46,11 @@
   commit = yellow bold
   func = green dim
   #plain = white bold
-
-
-
-[alias]
-  uncommit = reset --soft HEAD^
-  l = log --pretty=format:'%h %an %Cred%ar %d %Cgreen%s'
-  tree = log --oneline --decorate --graph --all  
-
-[branch]
-  autosetupmerge = true
-
-[push]
-  default = current
-
-[color]
-  diff = auto
-
-[color "branch"]
-  current = green
-  local = cyan
-  remote = yellow
-
-[color "status"]
-  added = green
-  changed = red
-  untracked = cyan
-[user]
-	name = Teagan Widmer
-	email = teagan@futureadvisor.com
-[github]
-	user = tkwidmer
 [core]
 	excludesfile = /Users/tkwidmer/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true

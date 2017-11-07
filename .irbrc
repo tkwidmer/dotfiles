@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'active_record'
+require 'awesome_print'
 
 alias q exit
 
@@ -54,48 +55,7 @@ if ENV['RAILS_ENV']
     end
 
     # Log SQL queries to stdout
-    ActiveRecord::Base.connection.instance_variable_set :@logger, Logger.new(STDOUT)
-
-    # For marshalling session data
-    def load_session(session_data)
-      Marshal.load(Base64.decode64(session_data.split('--').first))
-    end
-  end
-end
-
-require 'rubygems'
-require 'active_record'
-require 'awesome_print'
-
-alias q exit
-
-class Object
-  def local_methods
-    (methods - Object.instance_methods).sort
-  end
-end
-
-if ENV['RAILS_ENV']
-  IRB.conf[:IRB_RC] = Proc.new do
-
-    # Let you use Model[id] to find by id
-    class ActiveRecord::Base
-      def self.[](index)
-        find_by_id(index)
-      end
-    end
-
-    # Shortcuts for finding things by symbol
-    def Fund(symbol)
-      Fund.where(:symbol => symbol.to_s).first
-    end
-
-    def Stock(symbol)
-      Stock.where(:symbol => symbol.to_s).first
-    end
-
-    # Log SQL queries to stdout
-    # ConsoleUtil.output_sql_to_console
+    # ActiveRecord::Base.connection.instance_variable_set :@logger, Logger.new(STDOUT)
     AwesomePrint.irb!
 
     # For marshalling session data
